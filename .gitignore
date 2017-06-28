@@ -1,0 +1,5 @@
+.idea
+spec/coverage
+.DS_Store
+coverage
+*~
