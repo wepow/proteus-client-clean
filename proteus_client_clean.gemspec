@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'proteus_client_clean'
   s.version     = '1.0.1'
-  s.summary     = "Ruby client to use proteus rest service"a
+  s.summary     = "Ruby client to use proteus rest service"
   s.description = "It provides an interface to use proteus features"
   s.authors     = %w(andresf)
   s.email       = 'andres@wepow.com'
