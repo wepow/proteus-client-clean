@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
                   Dir['lib/proteus_client/models/*.rb'] +
                   Dir['lib/proteus_client/*.rb'] +
                   %w(lib/proteus_client.rb) 
-  s.homepage    = 'https://github.com/wepow/proteus_client_clean'
+  s.homepage    = 'https://github.com/wepow/proteus-client-clean'
 
   s.add_runtime_dependency "json", "~> 1.7"
   s.add_runtime_dependency "rest-client", "~> 1.6.7"
