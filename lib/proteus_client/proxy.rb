@@ -82,15 +82,6 @@ module ProteusClient
       videos.map { |properties| ProteusClient::Video.new(properties) }
     end
 
-    def delete_video(id)
-      url   = link(@root, 'proteus:video', cache: true)
-      video = expanded_templated_route(url, 'id', id)
-
-      response = retry_once { resource(video).delete }
-      
-      {message: 'success'}
-    end
-
     def create_version(video_id, version_name, solution)
       url      = link(@root, 'proteus:video', cache: true)
       video    = expand_templated_route(url, 'id', video_id)
