@@ -84,7 +84,7 @@ module ProteusClient
 
     def delete_video(id)
       url   = link(@root, 'proteus:video', cache: true)
-      video = expanded_templated_route(url, 'id', id)
+      video = expand_templated_route(url, 'id', id)
 
       response = retry_once { resource(video).delete }
       
