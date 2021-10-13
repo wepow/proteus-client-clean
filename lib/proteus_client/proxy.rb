@@ -60,6 +60,23 @@ module ProteusClient
       ProteusClient::Video.new(properties)
     end
 
+    def create_video_with_versions(url, version_name, solution, versions)
+      uri = link(@root, 'proteus:videos', cache: true)
+      params =
+        {
+          video: {
+            url: url,
+            solution: solution,
+            version_name: version_name
+          },
+          versions: versions
+        }
+      video = expand_templated_route(uri, 'v2')
+      response   = retry_once { resource(video).post(params) }
+      properties = Representers::Video.new(response).to_hash
+      ProteusClient::Video.new(properties)
+    end
+
     def get_video(id, version_name = nil)
       url   = link(@root, 'proteus:video', cache: true)
       video = expand_templated_route(url, 'id', id)
