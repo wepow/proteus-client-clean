@@ -71,7 +71,7 @@ module ProteusClient
           },
           versions: versions
         }
-      video = expand_templated_route(uri, 'v2')
+      video = "#{uri}/v2"
       response   = retry_once { resource(video).post(params) }
       properties = Representers::Video.new(response).to_hash
       ProteusClient::Video.new(properties)
