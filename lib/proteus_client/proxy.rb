@@ -119,6 +119,12 @@ module ProteusClient
       {message: 'success'}
     end
 
+    def get_failed_jobs
+      url      = link(@root, 'proteus:telestream:failed_jobs', cache: true)
+      response = retry_once { resource(url).get }
+      response
+    end
+
     private
 
     def resource(url)
