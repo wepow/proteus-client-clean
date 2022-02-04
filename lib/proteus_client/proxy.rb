@@ -129,7 +129,7 @@ module ProteusClient
 
     def resource(url)
       RestClient::Resource.new(url, content_type: :json, 
-                               user: @user, password: @password)
+                               user: @user, password: @password, timeout: 180)
     end
 
     def link(resource, link, options = {})
