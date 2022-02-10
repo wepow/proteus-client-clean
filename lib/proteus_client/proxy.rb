@@ -60,7 +60,7 @@ module ProteusClient
       ProteusClient::Video.new(properties)
     end
 
-    def create_video_with_versions(url, version_name, solution, versions)
+    def create_video_with_versions(url, version_name, solution, versions, timeout = 60)
       uri = link(@root, 'proteus:videos', cache: true)
       params =
         {
@@ -72,7 +72,7 @@ module ProteusClient
           versions: versions
         }
       video = "#{uri}/v2"
-      response   = retry_once { resource(video).post(params) }
+      response   = retry_once { resource(video, timeout).post(params) }
       properties = Representers::Video.new(response).to_hash
       ProteusClient::Video.new(properties)
     end
@@ -127,9 +127,9 @@ module ProteusClient
 
     private
 
-    def resource(url)
+    def resource(url, timeout = 60)
       RestClient::Resource.new(url, content_type: :json, 
-                               user: @user, password: @password, timeout: 180)
+                               user: @user, password: @password, timeout: timeout)
     end
 
     def link(resource, link, options = {})
