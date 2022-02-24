@@ -72,7 +72,7 @@ module ProteusClient
           versions: versions
         }
       video = "#{uri}/v2"
-      response   = retry_once { resource(video, timeout).post(params) }
+      response   = resource(video, timeout).post(params)
       properties = Representers::Video.new(response).to_hash
       ProteusClient::Video.new(properties)
     end
